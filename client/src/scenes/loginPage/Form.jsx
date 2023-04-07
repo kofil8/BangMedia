@@ -49,8 +49,8 @@ const initialValuesLogin = {
 const Form = () => {
   const [pageType, setPageType] = useState("login");
   const { palette } = useTheme();
-  const useDispatch = useDispatch();
-  const useNavigate = useNavigate();
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
   const isNonMobile = useMediaQuery("(min-width: 600px)");
   const isLogin = pageType === "login";
   const isRegister = pageType === "register";
@@ -88,8 +88,6 @@ const Form = () => {
         }
     );
     const loggedIn = await loggedInUserResponse.json();
-    // const useDispatch = useDispatch();
-    // const useNavigate = useNavigate();
     onSubmitProps.resetForm();
     if (loggedIn) {
         dispatch(
@@ -196,7 +194,7 @@ const Form = () => {
                     >
                       {({ getRootProps, getInputProps }) => (
                         <Box
-                          {...getRootProps}
+                          {...getRootProps()}
                           border={`2px dashed ${palette.primary.main}`}
                           p="1rem"
                           sx={{ "&:hover": { cursor: "pointer" } }}
